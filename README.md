@@ -1,5 +1,5 @@
 # tinymce-plugins
-This is tinymce plugins
+This is tinymce plugin
 
 ## 前言
 因为项目需要用到富文本编辑器众多富文本编辑器中，选择了 Tinymce，根据项目需要对Tinymce 进行扩展和增强插件，记录一下，并同时分享给需要帮助的人。
@@ -9,7 +9,7 @@ This is tinymce plugins
 
 [tinymce 中文文档]( http://tinymce.ax-z.cn/)
 
-[项目demo地址](http://fivecc.gitee.io/tinymce-plugins/demo/)
+[项目demo地址](http://tinymce-plugin.github.io/tinymce-plugins/demo/)
 
 [CSDN 博客](https://fivecc.blog.csdn.net/article/details/111810804)
 
