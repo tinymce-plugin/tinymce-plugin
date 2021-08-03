@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+  <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+  <!-- <script src='./api/api.js'></script> -->
+  
+  <script src='tinymce.js'></script><!-- 必要 -->
+  <style>
+    body{max-width: 1920px; min-width: 900px;width: 100%; margin: 0 auto;}
+    header{}
+    .header_logo{ display: inline-block;vertical-align: middle;}
+    header > div{ display: block; text-align: center;}
+   .demo,#showID{ margin-top:50px; border: 2px solid #dedede ;}
+   #showID{ padding: 20px;}
+   #tinymce-app .tinymce-box {padding-bottom: 0px!important;}
+   .tiny_color{ color:#344A85 ;text-shadow: 0 3px 5px #677285; display: inline-block;margin-right: -20px; vertical-align: middle;}
+   .plugin_color { color: #43B984;text-shadow: 0 3px 5px #34435C;display: inline-block;margin-left: -23px; vertical-align: middle;}
+   .text-center{ text-align: center;}
+   .animated #logoSvgId{
+    fill-opacity: 0.75
+   }
+   a{display: inline-block; padding: 20px;font-size: 20px; list-style: none; text-decoration: none;color: #333;}
+   #logoSvgId{display: inline-block; vertical-align: middle;}
+   .btn{ border-radius: 20px; outline: none; width: 300px;height: 60px; margin: 20px auto; display: block; background: #1488F5; text-align: center;line-height: 60px; font-size: 28px;letter-spacing: 2px; color: #dedede;}
+  </style>
+</head>
+
+<body>
+      <h1>全部魔改项目</h1>
+      <div class="demo">
+        <div id="tinymce-app">
+            <div class="tinymce-box" style="color: #000;">
+                <div class="tinymce-cnt" id="mytextarea">
+                  <div id="fvContentID"><ol>
+                    <li style="letter-spacing: 2px;"><span style="color: #2dc26b;"><span style="color: #000000;">不知如何使用编辑框可以点击<img src="http://base.hope55.com/UploadFile/2020/11/13/fcd5cc64-aff6-4ded-8f14-6a98b66a2aea.png">（或 Alt+0)，查看帮助-【快捷键】【功能介绍】【操作手册】【疑问解答】【反馈问题】 。</span></span></li>
+                    <li style="letter-spacing: 2px;"><span style="color: #3598db;">鼠标悬浮</span>在<em>功能图标</em>上可了解功能名称</li>
+                    <li style="letter-spacing: 2px;"><span style="color: #e03e2d;">如过需要修改2020年11月之前的旧新闻，建议先清除格式&nbsp; 或&nbsp; 一键布局<img src="http://base.hope55.com/UploadFile/2020/11/13/e952a0d5-2d30-4d86-ae7d-e8fd5c4e7cc7.png">，将旧新闻样式去掉重新排版</span></li>
+                    <li style="letter-spacing: 2px;"><span style="color: #e03e2d;">若文档编辑调整过程中发生意外关闭【如：登录时间过长】，并且未存为草稿 可以点击<img src="http://base.hope55.com/UploadFile/2020/12/25/9b1473d3-e399-43d9-86b1-a0cb5970d7d0.png">，恢复文档编辑状态（1小时以内的最近状态）</span></li>
+                    <li style="letter-spacing: 2px;"><span style="color: #e03e2d;"><span id="attachment_mce_1" contenteditable="false"><img style="width: 30px;" src="http://base.hope55.com/Content/js/tinymce/plugins/attachment/icons/file_type_pdf2.svg" width="30px"><a href="http://base.hope55.com/UploadFile/2020/11/9/a7653b78-f186-4237-81fb-213aac317ebe.pdf" target="_blank" rel="noopener">新编辑器新闻上传操作说明(1).pdf (1.04 M)</a></span> </span></li>
+                  </ol></div>
+                  <style> #fvContentID a{display:inline-block!important} #fvContentID .attachment>img{display:inline-block!important;max-width:30px!important;min-width:30px!important;}#fvContentID .attachment>a{display:contents!important;}</style>
+                </div>
+            </div>
+        </div>
+      </div>
+      <!-- <a class="btn" onclick="savefun()" >点击保存显示</a> -->
+      <!-- <div>
+         <h1>展示区域</h1>
+         <div id="showID">
+             <h2 class="text-center" >点击保存后富文本框中内容将在此处显示</h2>
+         </div>
+     </div> -->
+     <div style="height: 60px;"></div>
+
+  <script>
+    function savefun(){
+      $("#showID").html(tinymceConfig.getHtml())
+    }
+  </script>
+  <script src="./config.js"></script>
+</body>
+</html>
