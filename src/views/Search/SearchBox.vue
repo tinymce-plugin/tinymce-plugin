@@ -44,11 +44,12 @@
   </div>
 </template>
 
-<script>
+<script lang='ts'>
+import { defineComponent } from '@vue/runtime-core'
 import matchQuery from './match-query'
 
 /* global SEARCH_MAX_SUGGESTIONS, SEARCH_PATHS, SEARCH_HOTKEYS */
-export default {
+export default defineComponent({
   name: 'SearchBox',
 
   data () {
@@ -214,7 +215,7 @@ export default {
       this.focusIndex = -1
     }
   }
-}
+})
 </script>
 <style scoped>
 .search-box {

@@ -4,10 +4,8 @@
 </div>
 </template>
 
-<script lang='ts'>
-import { defineComponent } from "@vue/runtime-core";
-
-export default defineComponent({
+<script>
+export default {
   name: 'DemoIframe',
     data(){
     return {
@@ -19,18 +17,20 @@ export default defineComponent({
    
   },
   methods:{
-    info(){
+   
+     info(){
       let that = this
     let timeID = setInterval(()=>{
-       if(document.getElementById('demoIframeID').contentWindow){
-          that.iframeHight = document.getElementById('demoIframeID').contentWindow.document.body.scrollHeight
+      let frame =document.getElementById('demoIframeID')
+       if(frame.contentWindow ){
+          that.iframeHight = frame.contentWindow.document.body.scrollHeight
           clearInterval(timeID)
        }
     },1000)
            
     }
   }
-})
+}
 </script>
 
 <style>

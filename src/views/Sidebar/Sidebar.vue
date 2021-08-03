@@ -2,10 +2,10 @@
 <div class="sidebar-Box">
    <search-box/>
    <ul class="sidebar-ul">
-      <li v-for="(item, index) in sidebarList" :key="index" class="sidebar-li">
-           <div v-if="item.children">
+      <li v-for="(item , index) in sidebarList" :key="index" class="sidebar-li">
+           <div v-if="item.children && item.children.length>0">
               <router-link :to="item.path" class="sidebar-title">{{ item.meta ? item.meta.title : item.name }}</router-link>
-               <ul class="sidebar-cUl" >
+               <ul class="sidebar-cUl">
                    <li v-for="( cItem, cIndex ) in item.children" :key="cIndex" class="sidebar-cLi" >
                        <router-link :to="item.path +'/'+ cItem.path" class="sidebar-cTitle"> {{ cItem.meta ? cItem.meta.title : cItem.name }} </router-link>
                    </li>
@@ -18,22 +18,21 @@
 </template>
 
 <script>
-import { defineComponent } from "@vue/runtime-core";
 import {routes} from "../../router/index"
 import SearchBox from "../Search/SearchBox.vue";
-export default defineComponent({
+export default {
   components: { SearchBox },
      name:'Sidebar',
      data(){
         return {
-            sidebarList:[]
+            sidebarList: []
         }
      },
      created(){
-         console.log(routes);
+        //  console.log(routes);
          this.sidebarList = routes
      }
-})
+}
 </script>
 
 <style lang="scss" scoped>

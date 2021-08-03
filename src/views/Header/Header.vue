@@ -16,10 +16,9 @@
 </div>
 </template>
 
-<script lang='ts' >
+<script>
 import Vivus from "../../assets/lib/vivus.js"
-import { defineComponent } from "@vue/runtime-core"
-export default  defineComponent({
+export default {
     name: 'Header',
     props:{
       dWidth: {
@@ -82,7 +81,7 @@ export default  defineComponent({
     }
   
 
-})
+}
 </script>
 
 <style lang="scss" scoped>

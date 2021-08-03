@@ -6,7 +6,7 @@ import mdContainer from "markdown-it-container";
 
 const docRule = /^\/@docs\/(.*?).md$/;
 
-const demoContainer = (md, callback: (description: string) => void) => ({
+const demoContainer = (md, callback) => ({
   validate(params) {
     return params.trim().match(/^demo\s*(.*)$/);
   },
@@ -21,24 +21,19 @@ const demoContainer = (md, callback: (description: string) => void) => ({
   },
 });
 
-interface VuedcoPluginOptions {
-  docsPath?: (root: string) => string | undefined;
-  root?: string | undefined;
-  plugins?: any[];
-}
 
-function stripScript(content: string) {
+function stripScript(content) {
   const result = content.match(/<(script)>([\s\S]+)<\/\1>/);
   const code = result && result[2] ? result[2].trim() : "";
   return code;
 }
 
-function stripStyle(content: string) {
+function stripStyle(content) {
   const result = content.match(/<(style)\s*>([\s\S]+)<\/\1>/);
   return result && result[2] ? result[2].trim() : "";
 }
 
-function stripTemplate(content: string) {
+function stripTemplate(content) {
   content = content.trim();
   if (!content) {
     return content;
@@ -46,17 +41,17 @@ function stripTemplate(content: string) {
   return content.replace(/<(script|style)[\s\S]+<\/\1>/g, "").trim();
 }
 
-export function createVuedcoPlugin(options: VuedcoPluginOptions): Plugin {
+export function createVuedcoPlugin(options) {
   const { docsPath , root} = options;
   const docDir = docsPath?docsPath(root) :'' || root;
   const docLoadRule = new RegExp(`/(.*?).md$`)
   return {
     name: 'md-to-vue-plugin', // 必须
-    resolveId(id , source ,importer) {
-        if (docRule.test(id)) {
-           return path.join(docDir, id.replace(docRule, "$1.md")) ;
-        }
-     },
+    // resolveId(id , source ,importer) {
+    //     if (docRule.test(id)) {
+    //        return path.join(docDir, id.replace(docRule, "$1.md")) ;
+    //     }
+    //  },
     //   load(id) {
     //     // if (docLoadRule.test(id)) {
     //     //     console.log(id)
@@ -75,16 +70,13 @@ export function createVuedcoPlugin(options: VuedcoPluginOptions): Plugin {
     transform(src, id) {
         if (docLoadRule.test(id)) {
             const fileName = id.split("/").pop().split(".")[0]
-            const demos: {
-                id: string;
-                component: string;
-              }[] = [];
+            const demos = [];
               let currentDescription = "";
               const md = new MarkdownIt("default", {
                 html: true,
                 linkify: true,
                 typographer: true,
-                highlight: function (code: string, lang: string) {
+                highlight: function (code, lang) {
                   if (lang === "html") {
                     const id = `Demo${demos.length}`;
                     const stript = (stripScript(code) || "export default {}").replace(
@@ -149,15 +141,13 @@ export function createVuedcoPlugin(options: VuedcoPluginOptions): Plugin {
               md.use(mdContainer, "warning");
               const context = md.render(src, {});
               const docComponent = `
-                      import { createApp, defineComponent } from 'vue';
-
                       ${demos.map((demo) => demo.component).join("")}
-                      const __script = defineComponent({
+                      const __script = {
                         components: {
                             ${demos.map((demo) => demo.id).join(",")}
                         },
                         template: ${JSON.stringify(context)}
-                      });
+                      };
                       export default __script;`;
           return {
             code: docComponent,

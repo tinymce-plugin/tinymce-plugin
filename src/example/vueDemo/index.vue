@@ -9,11 +9,10 @@
 </div>
 </template>
 
-<script lang='ts'>
-import { defineComponent } from "@vue/runtime-core";
+<script>
 import TinymceVue from "./Tinymce-vue.vue";
-import "webvite/lib/tp-lineheight"
-export default defineComponent({
+// import "webvite/lib/tp-lineheight"
+export default{
   components: { TinymceVue },
     name: 'vueDemo',
     data(){
@@ -24,7 +23,7 @@ export default defineComponent({
   created(){
       
   }
-})
+}
 </script>
 <style lang="scss" scoped>
  .vueDemo{

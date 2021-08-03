@@ -1,24 +1,22 @@
-import { UserConfig } from 'vite'
+import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { createVuedcoPlugin } from "./build/plugins/doc/index";
 import path from "path";
-import Markdown from 'vite-plugin-md'
-const pathResolve = (pathStr: string) => {
+const pathResolve = (pathStr) => {
   return path.resolve(__dirname, pathStr);
 };
-const config: UserConfig = {
+// https://vitejs.dev/config/
+export default defineConfig({
   alias: {
-    "/@/": pathResolve("./examples/src"),
+    '/@docs/': pathResolve('../packages/'),
     vue: "vue/dist/vue.esm-bundler.js",
   },
-  plugins: [
-    createVuedcoPlugin({
-      docsPath(root: string) {
-        return path.join(root, "./packages/");
-      },
-      root: path.join(__dirname)
-    }),
-    vue(),
+  plugins: [ createVuedcoPlugin({
+    docsPath(root) {
+      return path.join(root, "./packages/");
+    },
+    root: path.join(__dirname)
+    }),vue()
   ],
   css: {
     preprocessorOptions: {
@@ -31,5 +29,4 @@ const config: UserConfig = {
       }
     }
   }
-};
-module.exports = config;
+})

@@ -22,15 +22,14 @@
   </div>
 </template>
 
-<script lang='ts'>
+<script>
 import {
-    defineComponent,
     reactive,
     ref,
     onMounted,
     nextTick
   } from "vue"
-  export default defineComponent({
+  export default {
     name: "Preview",
     props: {
       source: {
@@ -39,13 +38,13 @@ import {
       }
     },
     setup(props, {slots, attrs }) {
-      const codeRef = ref<HTMLDivElement>()
+      const codeRef = ref()
       const state = reactive({
         codeHeight: 0
       })
       const highlightAll = () => {
         nextTick(() => {
-          (window as any).Prism.highlightAll()
+          window.Prism.highlightAll()
         })
       }
       const toggleCode = () => {
@@ -67,8 +66,7 @@ import {
 
       }
     }
-  })
-
+  }
 </script>
 
 <style lang="scss" scoped>

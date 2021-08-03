@@ -6,11 +6,10 @@
 </div>
 </template>
 
-<script lang='ts'>
-import { defineComponent } from "@vue/runtime-core";
+<script>
 import tinymce from "../../assets/lib/tinymce-vue/tinymce";
 // import '../../assets/lib/tinymce-vue/plugins/tp-lineheight/plugin'
-export default defineComponent({
+export default {
     name: 'TinymceVue',
     props:{
       modelValue: {
@@ -34,10 +33,10 @@ export default defineComponent({
     },
     computed: {
         value: {
-        get():any {
+        get() {
             return this.modelValue
         },
-        set(value: any) { 
+        set(value) { 
             this.$emit('update:modelValue', value)
         }
     }
@@ -83,7 +82,7 @@ export default defineComponent({
                             value: '12px 14px 16px 18px 24px 36px 48px 56px 72px',
                             default: '16px',
                             styleSelector: 'font-size',
-                            onAction: function(editor:any, value:any){
+                            onAction: function(editor, value){
                                editor.formatter.apply('fontsize', { value: value });
                             }
                           },
@@ -117,7 +116,7 @@ export default defineComponent({
                 min_height:400,
                 max_height: 700,
                 fontsize_formats: '12px 14px 16px 18px 24px 36px 48px 56px 72px',
-                setup: (editor:any)=> {
+                setup: (editor)=> {
                   editor.on('init', ()=>{
                         // console.log('init', this.content);
                         // editor.on('keyup input', e=>{ //只在编辑器中打字才会触发
@@ -140,5 +139,5 @@ export default defineComponent({
             tinymce.init(options)
         }
   }
-})
+}
 </script>

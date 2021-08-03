@@ -1,5 +1,4 @@
-import { RouteRecordRaw, createRouter, createWebHashHistory} from "vue-router";
-import {Component} from "vue"
+import { createRouter, createWebHashHistory} from "vue-router";
 const Plugins = {
   template: '<div class="plugins" ><router-view></router-view></div>',
 }
@@ -12,11 +11,11 @@ const Examples = {
 // import axupimgs from "../../packages/axupimgs/axupimgs.md"
 // import attachment from "../../packages/attachment/attachment.md"
 
-const routes: RouteRecordRaw[] = [
+const routes = [
     {
       path: "/",
       name: "introduction",
-      component: (): Component => import("../markdown/introduction.md"),
+      component: () => import("../markdown/introduction.md"),
       // component: (): Component => import("../../packages/alert/__docs__/alert.md"),
       meta: {
         title: '前言',
@@ -25,7 +24,7 @@ const routes: RouteRecordRaw[] = [
     {
       path: "/quickStart",
       name: "quickStart",
-      component: (): Component => import("../markdown/quickStart.md"),
+      component: () => import("../markdown/quickStart.md"),
       // component: (): Component => import("../../packages/alert/__docs__/alert.md"),
       meta: {
         title: '快速上手',
@@ -44,14 +43,14 @@ const routes: RouteRecordRaw[] = [
         meta: {
           title: '多图上传',
         },
-        component: (): Component => import("/@docs/axupimgs/__docs__/axupimgs.md")
+        component: () => import("../../packages/axupimgs/__docs__/axupimgs.md")
       },{
         path: "attachment",
         name: "attachment",
         meta: {
           title: '附件上传',
         },
-        component: (): Component => import("/@docs/attachment/__docs__/attachment.md")
+        component: () => import("../../packages/attachment/__docs__/attachment.md")
       }
     ],
     },
@@ -68,21 +67,21 @@ const routes: RouteRecordRaw[] = [
         meta: {
           title: '插件Demo',
         },
-        component: (): Component => import("../example/demo/demo.vue")
+        component: () => import("../example/demo/demo.vue")
       },{
         path: "demoall",
         name: "demoall",
         meta: {
           title: '全部Demo',
         },
-        component: (): Component => import("../example/demo/demoAll.vue")
+        component: () => import("../example/demo/demoAll.vue")
       },{
         path: "vueDemo",
         name: "vueDemo",
         meta: {
           title: 'vueDemo',
         },
-        component: (): Component => import("../example/vueDemo/index.vue")
+        component: () => import("../example/vueDemo/index.vue")
       }
     ],
     }

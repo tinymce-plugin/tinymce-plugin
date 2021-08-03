@@ -10,11 +10,11 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script>
+
 import Header from './views/Header/Header.vue'
 import Sidebar from './views/Sidebar/Sidebar.vue'
-export default defineComponent({
+export default {
   components: { Header, Sidebar },
   data(){
      return{
@@ -26,7 +26,7 @@ export default defineComponent({
      window.addEventListener('resize',this.resizeFun, false);
   },
   methods:{
-     resizeFun(e:any){
+     resizeFun(e){
        this._resize = document.documentElement.clientWidth
         //  console.log();
      },
@@ -34,7 +34,7 @@ export default defineComponent({
   destroy(){
     window.removeEventListener("resize",this.resizeFun)
   }
-})
+}
 </script>
 <style>
 body{
