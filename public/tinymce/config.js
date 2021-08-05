@@ -58,14 +58,7 @@ var xhrOnProgress = function (fun) {
                  fontsize_formats: '12px 14px 16px 18px 24px 36px 48px 56px 72px',
                  font_formats: '微软雅黑=Microsoft YaHei,Helvetica Neue,PingFang SC,sans-serif;苹果苹方=PingFang SC,Microsoft YaHei,sans-serif;宋体=simsun,serif;仿宋体=FangSong,serif;黑体=SimHei,sans-serif;Arial=arial,helvetica,sans-serif;Symbol=symbol;Tahoma=tahoma,arial,helvetica,sans-serif;Terminal=terminal,monaco;Times New Roman=times new roman,times;Verdana=verdana,geneva;Webdings=webdings;Wingdings=wingdings,zapf dingbats;',
                  images_upload_base_path: '',
-                 images_upload_handler: function (blobInfo, succFun, failFun) {//自定义插入图片函数  blobInfo: 本地图片blob对象, succFun(url|string)： 成功回调（插入图片链接到文本中）, failFun(string)：失败回调
-                    var file = blobInfo.blob();
-                    var reader = new FileReader();
-                    reader.onload = function(e){
-                     succFun(e.target.result)
-                    }
-                   reader.readAsDataURL(file)
-                 },
+               
                  images_upload_handler: function (blobInfo, succFun, failFun) {
                     var file = blobInfo.blob();
                     var reader = new FileReader();

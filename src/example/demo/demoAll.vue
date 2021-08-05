@@ -24,7 +24,7 @@ export default {
           that.iframeHight = frame.contentWindow.document.body.scrollHeight
           clearInterval(timeID)
        }
-    },1000)
+    },1800)
            
     }
   }

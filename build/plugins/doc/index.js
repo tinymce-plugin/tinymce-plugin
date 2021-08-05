@@ -47,26 +47,6 @@ export function createVuedcoPlugin(options) {
   const docLoadRule = new RegExp(`/(.*?).md$`)
   return {
     name: 'md-to-vue-plugin', // 必须
-    // resolveId(id , source ,importer) {
-    //     if (docRule.test(id)) {
-    //        return path.join(docDir, id.replace(docRule, "$1.md")) ;
-    //     }
-    //  },
-    //   load(id) {
-    //     // if (docLoadRule.test(id)) {
-    //     //     console.log(id)
-    //     //     const context = '<div></div>'
-    //     //     const docComponent = `
-    //     //     import { createApp, defineComponent } from 'vue';
-    //     //     const __script = defineComponent({
-    //     //       components: {
-    //     //       },
-    //     //       template: ${JSON.stringify(context)}
-    //     //     });
-    //     //     export default __script;`;
-    //     //     return docComponent;
-    //     // }
-    //   },
     transform(src, id) {
         if (docLoadRule.test(id)) {
             const fileName = id.split("/").pop().split(".")[0]

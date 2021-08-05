@@ -26,7 +26,4 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
- .vueDemo{
-     padding-right: 5%;
- }
 </style>

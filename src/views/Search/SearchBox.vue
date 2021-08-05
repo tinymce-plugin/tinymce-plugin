@@ -291,7 +291,7 @@ export default defineComponent({
     color: #3eaf7c
 }
 
-@media (max-width: 959px) {
+/* @media (max-width: 959px) {
     .search-box input {
         cursor:pointer;
         width: 0;
@@ -304,7 +304,7 @@ export default defineComponent({
         left: 0;
         width: 10rem
     }
-}
+} */
 
 @media (-ms-high-contrast:none) {
     .search-box input {
