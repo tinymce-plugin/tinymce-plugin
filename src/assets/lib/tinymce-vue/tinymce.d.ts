@@ -2870,6 +2870,7 @@ interface SaxParserNamespace {
     findEndTag: (schema: Schema, html: string, startIndex: number) => number;
 }
 interface TinyMCE extends EditorManager {
+    tinymcePlugin: boolean;
     geom: {
         Rect: Rect;
     };

@@ -1,0 +1,53 @@
+ul.tp-square{
+      
+}
+ul.tp-iconlists_tick{
+  padding-left: 0;
+  -webkit-box-sizing: border-box ;
+  box-sizing: border-box;
+  li{
+    position: relative;
+    list-style: none!important;
+    // display: flex;
+    // align-items: center;
+    padding-left: 2em;
+    line-height: 2em;
+    min-height: 2em;
+    &::before{
+      content: "";
+      display: inline-block;
+     position: absolute;
+      width: 30px;
+      // min-width: 1.5em;
+      height: 30px;
+      top: 0;
+      left: 0;
+      background: url('/tinymce/icons/tp/tp-tick.png') no-repeat center;
+      background-size: 36px auto;
+    }
+ }
+}
+.tp-columns.tp-iconlists_default{
+  &>li{
+    // margin-left:40px;
+    margin:0 20px;
+     width: calc(50% - 40px);
+  }
+}
+.tp-columns{
+  display: flex;
+  flex-wrap: wrap;
+   margin: ;
+  &>*{
+    -webkit-box-sizing: border-box ;
+    box-sizing: border-box;
+    display: inline-block;
+    // width: 50%;
+  }
+}
+.tp-columns_columns-2{
+  padding-left:0;
+    &>*{
+      width: 50%;
+    }
+}

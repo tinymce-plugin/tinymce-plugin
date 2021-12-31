@@ -11771,7 +11771,7 @@
           img.removeAttribute(elementSelectionAttr);
         });
         controlElm = e.type === 'mousedown' ? e.target : selection.getNode();
-        controlElm = dom.$(controlElm).closest('table,img,figure.image,hr,video,span.mce-preview-object')[0];
+        controlElm = dom.$(controlElm).closest('table,img,figure.image,hr,video,tp-tabs,tp-collapse,tp-buttons,span.mce-preview-object')[0];
         if (isChildOrEqual(controlElm, rootElement)) {
           disableGeckoResize();
           startElm = selection.getStart(true);
@@ -18010,6 +18010,7 @@
         selectorChangedWithUnbind: function (selector, callback) {
           if (!selectorChangedData) {
             selectorChangedData = {};
+            
             currentSelectors = {};
             editor.on('NodeChange', function (e) {
               var node = e.element, parents = dom.getParents(node, null, dom.getRoot()), matchedSelectors = {};
@@ -18049,6 +18050,7 @@
             selectorChangedData[selector] = [];
           }
           selectorChangedData[selector].push(callback);
+      // console.log( selectorChangedData);
           return {
             unbind: function () {
               deleteFromCallbackMap(selectorChangedData, selector, callback);
@@ -21276,6 +21278,7 @@
       var previewElm = dom.select(name, previewFrag)[0] || previewFrag.firstChild;
       each$e(format.styles, function (value, name) {
         var newValue = removeVars(value);
+       
         if (newValue) {
           dom.setStyle(previewElm, name, newValue);
         }
@@ -28884,6 +28887,7 @@
       };
       Editor.prototype.insertContent = function (content, args) {
         if (args) {
+          console.log(args);
           content = extend$3({ content: content }, args);
         }
         this.execCommand('mceInsertContent', false, content);
@@ -30112,3 +30116,6 @@
 
 }());
 export default tinymce
+
+
+// console.log(tinymce);

@@ -1,0 +1,130 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 2627438 */
+  src: url('//at.alicdn.com/t/font_2627438_tl87y8epxj.woff2?t=1630480852428') format('woff2'),
+       url('//at.alicdn.com/t/font_2627438_tl87y8epxj.woff?t=1630480852428') format('woff'),
+       url('//at.alicdn.com/t/font_2627438_tl87y8epxj.ttf?t=1630480852428') format('truetype');
+}
+
+.iconfont,.tpIconfont {
+  font: inherit;
+  font-family: "iconfont" !important;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-map:before {
+  content: "\e60c";
+}
+
+.icon-yuangou:before {
+  content: "\e60e";
+}
+
+.icon-anonymous-iconfont:before {
+  content: "\e711";
+}
+
+.icon-compare-black-icon:before {
+  content: "\e60b";
+}
+
+.icon-down:before {
+  content: "\e8cd";
+}
+
+.icon-gougou:before {
+  content: "\e99b";
+}
+
+.icon-caidan:before {
+  content: "\e630";
+}
+
+.icon-search:before {
+  content: "\e613";
+}
+
+.icon-jiantou-you:before {
+  content: "\e738";
+}
+
+.icon-icon:before {
+  content: "\e604";
+}
+
+.icon-icongraduationcap:before {
+  content: "\e67a";
+}
+
+.icon-yinhang:before {
+  content: "\eda5";
+}
+
+.icon-close:before {
+  content: "\e622";
+}
+
+.icon-sousuo:before {
+  content: "\e6bb";
+}
+
+.icon-xiala:before {
+  content: "\e61e";
+}
+
+.icon-phonelinecircle:before {
+  content: "\e603";
+}
+
+.icon-fa-home:before {
+  content: "\e6b0";
+}
+
+.icon-google_play:before {
+  content: "\e618";
+}
+
+.icon-back_to_top:before {
+  content: "\e606";
+}
+
+.icon-instagram:before {
+  content: "\e607";
+}
+
+.icon-emall-tubiao:before {
+  content: "\e677";
+}
+
+.icon-app_store:before {
+  content: "\e6a9";
+}
+
+.icon-Facebook:before {
+  content: "\e600";
+}
+
+.icon-arrow-right:before {
+  content: "\e628";
+}
+
+.icon-linkedin:before {
+  content: "\ebf6";
+}
+
+.icon-in:before {
+  content: "\e601";
+}
+
+.icon-icon-foot-youtobe:before {
+  content: "\e662";
+}
+
+.icon-ziyuan1:before {
+  content: "\e602";
+}
+
+.icon-icomoonfacebook2:before {
+  content: "\e63b";
+}

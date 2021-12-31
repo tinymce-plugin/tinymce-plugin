@@ -9,13 +9,14 @@
  * Licensed under MIT
  */
 tinymce.PluginManager.add('indent2em', function(editor, url) {
+    // console.log('sdd')
     var pluginName='首行缩进';
     var global$1 = tinymce.util.Tools.resolve('tinymce.util.Tools');
     var indent2em_val = editor.getParam('indent2em_val', '2em');
     editor.on('init', function() {
         editor.formatter.register({
             indent2em: {
-                selector: 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table',
+                selector: 'p,li',
                 styles: { 'text-indent': '%value' },
             }
         });

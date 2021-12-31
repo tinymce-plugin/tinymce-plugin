@@ -1,0 +1,156 @@
+/* 代码行号 */
+.fv-mardown-html{
+  max-width: 1300px;
+}
+.fv-mardown-html .fv-mardown-main{
+    min-height: 300px;
+}
+.fv-mardown-html .hljs{
+    line-height: 1.5;
+    border-radius:5px;
+    position: relative;
+    max-width: 1300px;
+  }
+  .fv-mardown-html .hljs .highlight-line-number{
+    float: left;
+    padding-left:1em;
+      line-height: 1.5;
+    padding-right:0.5em;
+    border-right: 1px solid #eee;
+  }
+  .fv-mardown-html .hljs .highlight-line-number li{
+    list-style: none;
+    text-align: right;
+  }
+  .fv-mardown-html .hljs:hover::after{
+    
+     display: inline-block;
+  }
+  .fv-mardown-html .hljs::after{
+    content: "copy";
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    z-index: 9;
+    cursor: pointer;
+    padding: 2px 8px;
+    background: rgba(255,255,255,0.8);
+    border-radius:10px;
+    font-weight: bold;
+    color: #333;
+    display: none;
+    transition: all 0.3s;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.8);
+  }
+  .fv-mardown-html .hljs .language-text{
+    position: absolute; z-index: 8; right: 1em;top:1em;
+     font-weight: bold;
+    text-shadow: 0 1px 2px #43B984;
+  }
+  .fv-mardown-html h1:hover .header-anchor, .fv-mardown-html h2:hover .header-anchor, .fv-mardown-html h3:hover .header-anchor, .fv-mardown-html h4:hover .header-anchor{
+    display: inline-block;
+  }
+  .fv-mardown-html .header-anchor{
+    display: none;
+    text-decoration: none;
+    font-size: 0.6em;
+    position: absolute;
+    z-index: 1;
+    vertical-align:middle;
+    font-weight: normal;
+    margin-left: -1em;
+    height: 0.6em;
+    padding-top:0.5em;
+    color:#344A85 ;
+   
+    text-shadow: 0 1px 2px #43B984;
+    transition: all 0.3s;
+  }
+  .fv-mardown-html .fv-state-tip .header-anchor{
+      display: none!important;
+  }
+  .fv-mardown-html .fv-state-tip{
+    max-width: 1162px;
+    margin: 10px 0;
+    padding: 10px 15px;
+    border-left: 8px solid  #909399;
+    background: #E9E9EB;
+  }
+  .fv-mardown-html .fv-tip.tip{
+    border-left-color:#344A85;
+    background: #d7e9e198;
+  }
+  .fv-mardown-html .fv-warning.warning{
+    border-left-color:  #E7C000;
+    background: #FFF7D0;
+  }
+  .fv-mardown-html .fv-danger.danger{
+   border-left-color:#F56C6C;
+    background: #FDE2E2;
+  }
+  
+  .fv-mardown-html code.fv-code_inline{
+    background:  #E7F2ED;
+    border-radius: 3px;
+    padding: .25rem .5rem;
+    color:#344A85;
+  }
+  
+  .fv-mardown-html  blockquote{
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 17.5px;
+    border-left: 5px solid #525868;
+    background: #eee;
+  }
+  .fv-mardown-html table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    border-spacing: 0;
+    border-collapse: collapse;
+ }
+ .fv-mardown-html table > thead > tr > th, .fv-mardown-html table > tbody > tr > th, .fv-mardown-html table > tfoot > tr > th, .fv-mardown-html table > thead > tr > td, .fv-mardown-html table > tbody > tr > td, .fv-mardown-html table > tfoot > tr > td {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #344A85;
+}
+.fv-mardown-html table > caption + thead > tr:first-child > th, .fv-mardown-html table > colgroup + thead > tr:first-child > th, .fv-mardown-html table > thead:first-child > tr:first-child > th, .fv-mardown-html table > caption + thead > tr:first-child > td, .fv-mardown-html table > colgroup + thead > tr:first-child > td, .fv-mardown-html table > thead:first-child > tr:first-child > td {
+    border-top: 0;
+    color: #344A85;
+}
+.fv-mardown-html table > thead > tr > th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #344A85;
+}
+.fv-mardown-html a{
+    text-decoration: none;
+    color: #344A85;
+}
+.fv-mardown-html a:hover{
+    text-decoration: underline;
+}
+
+.fv-mardown-html .edit-page{
+
+}
+  
+.loading{
+    position: relative;
+}
+.tinymce_loading{
+    position:absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 99999;
+    opacity: 0;
+    pointer-events: none;
+    /* transition: all 0.3s; */
+    width: 100%;
+    height: 100%;
+}
+.loading .tinymce_loading{
+    opacity: 1;
+  }

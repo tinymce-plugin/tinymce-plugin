@@ -79,16 +79,16 @@ export default defineComponent({
       const pages  =[{
     title: 'HoMe PaGe',
     path: '/plugins/attachment',
-    headers:[{"level": 2, "title": "使用说明", "slug": "使用说明" }],
+    headers:[{"level": 2, "title": "使用说明", "slug": "警告" }],
     relativePath: 'attachment.md',
     frontmatter: {
-      tags: ['attachment', 'test', '说明    AwEsOme']
+      tags: ['attachment', '%E8%AD%A6%E5%91%8A','ddd', '说明    AwEsOme']
     }
   }, {title: 'hahah',
-    path: '/plugins/axupimgs',
+    path: '/plugins/axupimgs#%E8%AD%A6%E5%91%8A',
      headers:[{"level": 2, "title": "dd", "slug": "dd" }],
     frontmatter: {
-      tags: [ '多图上传','多图']
+      tags: [ '多图上传','多图','%E8%AD%A6%E5%91%8A']
     }
   }]
       const max = 5 || SEARCH_MAX_SUGGESTIONS

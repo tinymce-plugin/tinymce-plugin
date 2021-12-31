@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+  <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+  <!-- <script src='./api/api.js'></script> -->
+  
+  <script src='tinymce.js'></script><!-- 必要 -->
+  <style>
+    body{max-width: 1920px; min-width: 900px;width: 100%; margin: 0 auto;}
+    header{}
+    .header_logo{ display: inline-block;vertical-align: middle;}
+    header > div{ display: block; text-align: center;}
+   .demo,#showID{ margin-top:50px; border: 2px solid #dedede ;}
+   #showID{ padding: 20px;}
+   #tinymce-app .tinymce-box {padding-bottom: 0px!important;}
+   .tiny_color{ color:#344A85 ;text-shadow: 0 3px 5px #677285; display: inline-block;margin-right: -20px; vertical-align: middle;}
+   .plugin_color { color: #43B984;text-shadow: 0 3px 5px #34435C;display: inline-block;margin-left: -23px; vertical-align: middle;}
+   .text-center{ text-align: center;}
+   .animated #logoSvgId{
+    fill-opacity: 0.75
+   }
+   a{display: inline-block; padding: 20px;font-size: 20px; list-style: none; text-decoration: none;color: #333;}
+   #logoSvgId{display: inline-block; vertical-align: middle;}
+   .btn{ border-radius: 20px; outline: none; width: 300px;height: 60px; margin: 20px auto; display: block; background: #1488F5; text-align: center;line-height: 60px; font-size: 28px;letter-spacing: 2px; color: #dedede;}
+  </style>
+</head>
+
+<body>
+      <!-- <h3> 因为项目 将编辑器魔改有点多，目前仅仅将部分魔改插件整理分享出来，后续将不定时更新 。。。(欢迎pr,点赞，提issues)<h3> -->
+     <h1>插件demo展示区域</h1>
+     <div class="demo2">
+        <div id="tinymce-app2">
+            <div class="tinymce-box" style="color: #000;">
+                <div class="tinymce-cnt" id="mytextarea2"></div>
+            </div>
+        </div>
+      </div>
+     <div style="height: 60px;"></div>
+
+  <script>
+    function savefun(){
+      $("#showID").html(tinymceConfig.getHtml())
+    }
+  </script>
+  <script src="./config.js"></script>
+</body>
+</html>

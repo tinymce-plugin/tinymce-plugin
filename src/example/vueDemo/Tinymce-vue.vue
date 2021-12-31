@@ -1,34 +1,56 @@
 <template>
-<div>
+ <!-- <input type="button" @click="importantFn" value="928392893" /> -->
+<div :class="tinymce_loading" :style="{ width: tinymce_width, 'min-height': tinymce_height}">
     <div class="tinymceVue">
       <div :id="tinymceID"></div>
    </div>
+   <div class="tinymce_loading"></div>
 </div>
 </template>
 
 <script>
-import tinymce from "../../assets/lib/tinymce-vue/tinymce";
+
 // import '../../assets/lib/tinymce-vue/plugins/tp-lineheight/plugin'
+const defaultOpt =JSON.stringify({
+                base_url:'/tinymce',
+                branding: false,
+                language:'zh_CN',
+                menubar: false,
+                schema: 'html5',
+                plugins: 'tp code hr',
+                table_default_attributes: {
+                    'border': '1'
+                },
+                table_default_styles: {
+                    'border-collapse': 'collapse',
+                    'width': '100%'
+                },
+                table_header_type: 'sectionCells',
+                table_responsive_width: true,
+                file_picker_types: 'file img media',
+                fontsize_formats: '12px 14px 16px 18px 24px 36px 48px 56px 72px',
+})
 export default {
     name: 'TinymceVue',
     props:{
       modelValue: {
           type: [String,Number],
           default: 'dsd'
-          },
-     tinymcePlugins: {
-         type : String,
-         default: 'print preview extendgroups clearhtml searchreplace insertdatetime autolink layout fullscreen line-height image upfile link media autosave code  table  advlist lists  emoticons autosave bdmap indent2em   axupimgs  letterspacing  quickbars attachment wordcount  autoresize importword'
-     },
-      tinymceToolbar: {
-        type: [String, Array],
-        default:()=>['|code formatselect fontselect  fontsizeselect   forecolor backcolor bold italic underline strikethrough link alignment alignmentdrop undo redo  restoredraft| ','layout upfile importword lineheight letterspacing line-height indent2em table image  emoticons mygroups preview']
-      }
+      },
+      options:{
+         type: Object,
+         default: {}
+      },
     },
     emits:['update:modelValue'],
     data(){
         return {
-          tinymceID: 'tinymce-'+ new Date().getTime(),
+          tinymceID: 'tinymce-'+ new Date().getTime()+Math.floor(Math.random()*10)+Math.floor(Math.random()*10),
+          tinymceTimerID: null,
+          tinymce_width: '100%',
+          tinymce_height: 400,
+          tinymce_loading: 'loading',
+          editorFn: ''
         }
     },
     computed: {
@@ -43,17 +65,27 @@ export default {
   },
   created(){
       setTimeout(()=>{
-       this.init()
-       if(typeof tinymce === "undefined") throw new Error('tinymce undefined');
-      },1000)
-    
-     
+       if(typeof tinymce === "undefined"){ 
+           clearInterval(this.tinymceTimerID)
+           throw new Error('tinymce undefined');
+        }
+      },3000)
+     this.tinymceTimerID = setInterval(()=>{
+          if(typeof tinymce !== "undefined"){
+            this.init()
+            clearInterval(this.tinymceTimerID)
+          }
+     },1000)
+
   },
   methods: {
+       importantFn(){
+            this.editor.execCommand('mceImportword')
+      },
       xhrOnProgress(fun) {
-          xhrOnProgress.onprogress = fun;
+          this.xhrOnProgress.onprogress = fun;
           return function () {
-              var xhr = $.ajaxSettings.xhr();
+              var xhr = this.createXHR();
               if (typeof xhrOnProgress.onprogress !== 'function')
                   return xhr;
               if (xhrOnProgress.onprogress && xhr.upload) {
@@ -62,189 +94,71 @@ export default {
               return xhr;
           }
         },
+       createXHR(){
+          if(window.XMLHttpRequest) {
+           return new XMLHttpRequest(); //要是支持XMLHttpRequest的则采用XMLHttpRequest生成对象
+          }
+          else if(window.ActiveXobiect){ //要是支持win的ActiveXobiect则采用ActiveXobiect生成对象。
+           return new ActiveXobiect('Microsoft.XMLHTTP');
+          }
+         return '';
+        },
         init(){
           let that = this
-            let options = {
-                selector: '#' + that.tinymceID,
-                base_url:'./tinymce',
-                 toolbar_groups: {
-                        formatting: {
-                            text: '文字格式',
-                            tooltip: 'Formatting',
-                            items: 'bold italic underline | superscript subscript',
-                        },
-                        alignment: {
-                            icon: 'align-left',
-                            tooltip: 'alignment',
-                            items: 'alignleft aligncenter alignright alignjustify',
-                        }
-                 },
-                 extend_groups_addicon:{
-                    mygroupsicon: '<img  src="https://avatars.githubusercontent.com/u/87648636?s=60&v=4" style="width:20px;" >'
-                 },
-                extend_groups: {
-                    mygroups: {
-                        icon: 'mygroupsicon',
-                        tooltip: 'mygroupsicon',
-                        isSelect: true,
-                        type: 'togglemenuitem',
-                        items: [
-                          {
-                            type: 'selectItem',
-                            text: '字体',
-                            value: '12px 14px 16px 18px 24px 36px 48px 56px 72px',
-                            default: '16px',
-                            styleSelector: 'font-size',
-                            onAction: function(editor, value){
-                               editor.formatter.apply('fontsize', { value: value });
-                            }
-                          },
-                          {
-                            icon: 'underline',
-                            text: '下划线',
-                            value: 'underline',
-                            styleSelector: 'text-decoration'
-                          },
-                          {
-                            icon: 'bold',
-                            text: '加粗',
-                            value: 'bold',
-                            selector: 'strong'
-                          },
-                          {
-                            icon: 'italic',
-                            text: '斜体',
-                            value: 'italic',
-                            selector: 'em'
-                          },
-                          ]
-                          
-                    }
-                },
-                plugins: this.tinymcePlugins,
-                toolbar: this.tinymceToolbar,
-                branding: false,
-                language:'zh_CN',
-                schema: 'html5',
-                min_height:400,
-                max_height: 700,
-                file_picker_types: 'media',
-                images_upload_handler: function (blobInfo, succFun, failFun) {//自定义插入图片函数  blobInfo: 本地图片blob对象, succFun(url|string)： 成功回调（插入图片链接到文本中）, failFun(string)：失败回调
-                    var file = blobInfo.blob();
-                    var reader = new FileReader();
-                    reader.onload = function(e){
-                     succFun(e.target.result)
-                    }
-                   reader.readAsDataURL(file)
-                 },
-                  file_picker_callback: function (succFun, value, meta) { //自定义文件上传函数 
-                    var filetype = '.pdf, .txt, .zip, .rar, .7z, .doc, .docx, .xls, .xlsx, .ppt, .pptx, .mp3, .mp4';
-                    var input = document.createElement('input');
-                    input.setAttribute('type', 'file');
-                    input.setAttribute('accept', filetype);
-                    input.click();
-                    input.onchange = function () {
-                        var file = this.files[0];
-                        var data = new FormData();
-                         data.append("file", file);
-                        $.ajax({
-                            data: data,
-                            type: 'GET',
-                            url: './api/file.json',
-                            header:{'Content-Type':'multipart/form-data'},
-                            cache: false,
-                            contentType: false,
-                            processData: false,
-                            dataType: 'json',
-                            xhr: that.xhrOnProgress(function (e) {
-                                const percent = (e.loaded / e.total * 100 | 0) + '%';//计算百分比
-                                // console.log(percent);
-                                progressCallback(percent);
-                  
-                            }),
-                        }).then(function (data) {
-                            if ( data.code== 200) {
-                                succFun(data.data,{ text: data.data });
-                            }
-                        }).fail(function (error) {
-                            failFun('上传失败:' + error.message)
-                        });
-                    }
-                 },
-                 file_callback: function (file, succFun) { //文件上传  file:文件对象 succFun(url|string,obj) 成功回调
-                    var data = new FormData();
-                    data.append("file", file);
-                    $.ajax({
-                        data: data,
-                        type: 'GET',
-                        url: './api/file.json',
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        header:{'Content-Type':'multipart/form-data'},
-                        dataType: 'json',
-                        xhr: xhrOnProgress(function (e) {
-                            const percent = (e.loaded / e.total * 100 | 0) + '%';//计算百分比
-                            progressCallback(percent);
-                        }),
-                    }).then(function (data) {
-                        if ( data.code== 200) {
-                            succFun(data.data,{text: file.name});
-                        } 
-                    }).fail(function (error) {
-                        // failFun('上传失败:' + error.message)
-                    });
-                 },
-                   attachment_upload_handler: function (file, succFun, failFun, progressCallback) {
-                    var data = new FormData();
-                    data.append("file", file);
-                    $.ajax({
-                        data: data,
-                        type: 'GET',
-                        url: './api/file.json',
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        header:{'Content-Type':'multipart/form-data'},
-                        dataType: 'json',
-                        xhr: xhrOnProgress(function (e) {
-                            const percent = (e.loaded / e.total * 100 | 0) + '%';//计算百分比
-                            progressCallback(percent);
-                        }),
-                    }).then(function (data) {
-                        if ( data.code== 200) {
-                            succFun(data.data);
-                        } else {
-                           failFun('上传失败:' + data.data);
-                        }
-                    }).fail(function (error) {
-                        failFun('上传失败:' + error.message)
-                    });
-                },
-                 attachment_max_size: 5009715200,
-                fontsize_formats: '12px 14px 16px 18px 24px 36px 48px 56px 72px',
-                setup: (editor)=> {
+         let defaultOptions = JSON.parse(defaultOpt)
+          defaultOptions.selector = '#' + that.tinymceID;
+          defaultOptions.setup =  (editor)=> {
+                  that.editorFn = editor
                   editor.on('init', ()=>{
                         // console.log('init', this.content);
                         // editor.on('keyup input', e=>{ //只在编辑器中打字才会触发
                         //         console.log(editor)
                         // }) 
-                        editor.setContent(this.value)
-                        editor.on('SetContent', e=>{ //编辑器在插入图片和撤销/重做时触发，组件content更新数据也会导致触发
-                            // this.changedLog(e, this.status, editor.getContent(), "--")
-                            console.log(e)
-                        })
-                        editor.on('Blur', ()=>{
-                              
-                        })
-                        editor.on('input NodeChange', ()=>{
-                            this.$emit('update:modelValue', editor.getContent());
-                        })
+                        setTimeout(()=>{
+                         that.tinymce_loading = '';
+                      
+                        },200)
+                         editor.setTpContent(that.value)
+                        tinymce.activeEditor.setProgressState(false,50); 
+                 
+                       
                     });
+                    editor.on('setContent', (e)=>{
+                        let _Interval = setInterval(()=>{
+                        if(typeof editor.getTpContent === "function"){
+                            clearInterval(_Interval)
+                                that.$emit('update:modelValue',editor.getTpContent());
+                            }
+                        },200)
+                    })
+                    editor.on('input  focus focusin click focusout drop ObjectResized keydown paste ExecCommand ObjectSelected', ()=>{
+                        that.$emit('update:modelValue',editor.getTpContent());
+                    })
                 }
-            }
-            tinymce.init(options)
+             Object.assign(defaultOptions, this.options || {})
+             that.tinymce_height = defaultOptions.min_height
+            tinymce.init(defaultOptions)
         }
   }
 }
 </script>
+<style scoped>
+ .loading{
+    position: relative;
+ }
+ .tinymce_loading{
+     position:absolute;
+     top: 0;
+     left: 0;
+     background: rgba(0,0,0,0.6);
+     z-index: 99999;
+     opacity: 0;
+     pointer-events: none;
+     /* transition: all 0.3s; */
+     width: 100%;
+     height: 100%;
+ }
+ .loading .tinymce_loading{
+     opacity: 1;
+ }
+</style>

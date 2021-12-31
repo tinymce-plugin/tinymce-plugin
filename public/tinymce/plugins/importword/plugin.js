@@ -32604,7 +32604,7 @@ tinymce.PluginManager.add('importword', function(editor, url) {
     var importword_filter = editor.getParam('importword_filter',undefined, 'function');
     var importword_handler = editor.getParam('importword_handler',undefined, 'function');
     // var importword_ = editor.getParam('importword_handler',undefined, 'function');
-    var pickFile=function(a){return new global$1(function(e){var c=document.createElement("input");c.type="file";c.style.position="fixed";c.style.left="0";c.style.top="0";c.style.opacity="0.001";document.body.appendChild(c);var b=function(f){e(Array.prototype.slice.call(f.target.files))};c.addEventListener("change",b);var d=function(g){var f=function(){e([]);c.parentNode.removeChild(c)};if(global$2.os.isAndroid()&&g.type!=="remove"){global$3.setEditorTimeout(a,f,0)}else{f()}a.off("focusin remove",d)};a.on("focusin remove",d);c.click()})};
+    var pickFile=function(a){return new global$1(function(e){var c=document.createElement("input");c.type="file";c.style.position="fixed";c.style.left="0";c.style.top="0";c.style.opacity="0.001";document.body.appendChild(c);var b=function(f){e(Array.prototype.slice.call(f.target.files))};c.addEventListener("change",b);var d=function(g){var f=function(f_f){ try{ e(Array.prototype.slice.call(f_f.target ? f_f.target.files : [])); }catch(err){} c.parentNode.removeChild(c)};if(global$2.os.isAndroid()&&g.type!=="remove"){global$3.setEditorTimeout(a,f,0)}else{f()}a.off("focusin remove",d)};a.on("focusin remove",d);c.click()})};
     var notificationID = null;
     function importFile(files){
 		readFileInputEventAsArrayBuffer(files,function(arrayBuffer) {
@@ -32649,13 +32649,15 @@ tinymce.PluginManager.add('importword', function(editor, url) {
 	}
 	var openDialog = function() {
 		pickFile(editor).then(function (files){
+            console.log(files);
             if(typeof importword_handler == 'function'){
                 var importword_handler_callback = function(files){
                     importFile(files);
                  }
                 importword_handler(editor,files,importword_handler_callback);
             }else{
-                var file_name = files[0].name;
+                console.log(files[0]);
+                var file_name = files[0].name || 'defule.docx' ;
                 if(file_name.substr(file_name.lastIndexOf(".")+1)=='docx'){
                     notificationID = editor.notificationManager.open({
                         text: '正在转换中...',
@@ -32684,6 +32686,9 @@ tinymce.PluginManager.add('importword', function(editor, url) {
 			openDialog();
 		}
 	});
+
+    editor.addCommand('mceImportword', openDialog);
+    tinyMCE.activeEditor.addCommand('mceImportword', openDialog)
     editor.ui.registry.addMenuItem('importword', {
 		icon: 'importword',
         text: pluginName,

@@ -1,6 +1,7 @@
 <template>
 <div>
-   <iframe id="demoIframeID" name="demoIframeID" src="/tinymce/indexall.html" frameborder="0" scrolling="no" width="100%" :height="iframeHight"></iframe>
+   <iframe id="demoIframeID" name="demoIframeID" src="/tinymce/indexall.html" frameborder="0" scrolling="no" width="100%" height="800"></iframe>
+   <PagesRouter pagesName="demoall" />
 </div>
 </template>
 

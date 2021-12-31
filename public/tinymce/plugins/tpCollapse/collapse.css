@@ -1,0 +1,69 @@
+.tp-collapse {
+  border-radius: 8px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.tp-collapse > input {
+  display: none;
+}
+.tp-collapse > input:checked + .tp-collapse_label + .tp-collapse_main {
+  max-height: 10000px;
+  border-radius: 8px  8px 0 0;
+}
+.tp-collapse > input:checked + label.tp-collapse_label::after {
+  line-height: 0px;
+  margin-top: -3px;
+  font-size: 32px;
+  font-weight: bold;
+  content: '_';
+}
+.tp-collapse > label.tp-collapse_label {
+  display: block;
+  background: #e6e6e6;
+  padding: 1px 40px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+}
+.tp-collapse > label.tp-collapse_label::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  font-family: -apple-system;
+  border: 1px solid #333;
+  top: 50%;
+  right: 40px;
+  transform: translate(0, -50%);
+}
+.tp-collapse > label.tp-collapse_label::after {
+  content: '+';
+  font-family: -apple-system;
+  position: absolute;
+  width: 30px;
+  text-align: center;
+  font-size: 30px;
+  line-height: 1;
+  height: 32px;
+  display: block;
+  top: 50%;
+  right: 41px;
+  transform: translate(0, -50%);
+}
+.tp-collapse > .tp-collapse_main {
+  -webkit-transition: max-height, border-top-width, border-bottom-width 0.3s;
+  transition: max-height, border-top-width, border-bottom-width 0.3s;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  max-height: 0;
+  overflow: hidden;
+  padding-top: 0!important;
+  padding-bottom: 0!important;
+  border-top-width: 0 !important;
+  border-bottom-width: 0 !important;
+}
+.tp-collapse > .tp-collapse_main > .tp-collapse_content {
+  background: #f6f1f1;
+}

@@ -386,7 +386,6 @@ tinymce.addI18n('zh_CN',{
 "Spellcheck": "拼写检查",
 "Caption": "标题",
 "Insert template": "插入模板",
-//以下为补充汉化内容 by 莫若卿
 "Code view": "代码区域",
 "Select...": "选择...",
 "Format Painter": "格式刷",
@@ -407,4 +406,6 @@ tinymce.addI18n('zh_CN',{
 "Version": "版本",
 "Keyboard Navigation": "键盘导航",
 "Open popup menu for split buttons": "该组合键的作用是软回车（插入br）",
+//tinymce-plugin by Five
+
 });

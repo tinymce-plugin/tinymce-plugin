@@ -12,8 +12,10 @@
  */
   tinymce.PluginManager.add('bdmap', function(editor, url) {
 	var pluginName='插入百度地图';
-	var bdmap_opt = editor.getParam('bdmap_options', {width: 560,height: 360,outputIframe: './plugins/bdmap/bd.html'});
+	var bdmap_opt = editor.getParam('bdmap_options', {width: 560,height: 360,outputIframe: '/plugins/bdmap/bd.html'});
+	
 	var baseURL= tinymce.baseURL || '.';
+	bdmap_opt.outputIframe = tinymce.baseURL + bdmap_opt.outputIframe
 	var iframe1 = baseURL+'/plugins/bdmap/map.html';
 	window.tinymceLng='';
 	window.tinymceLat='';

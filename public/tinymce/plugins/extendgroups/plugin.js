@@ -233,7 +233,7 @@
            return editor.selection.selectorChangedWithUnbind(selector.join(','),buttonApi.setActive).bind;
           }
         }
-      };
+      }; 
     }
  
     var register$1 = function (editor ,registerName, registerObj) {

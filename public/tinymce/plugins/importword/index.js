@@ -1,1 +1,1 @@
-require('./plugin.min.js');
+require('./plugin.js');

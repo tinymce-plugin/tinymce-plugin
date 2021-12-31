@@ -485,6 +485,7 @@
         var category = currentTab.get();
         var candidates = database.listCategory(category);
         var results = emojisFrom(candidates, dialogData[patternName], category === ALL_CATEGORY ? Optional.some(300) : Optional.none());
+        // console.log(results);
         dialogApi.setData({ results: results });
       };
       var updateFilter = last(function (dialogApi) {

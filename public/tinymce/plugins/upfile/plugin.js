@@ -15,7 +15,7 @@
 	var baseURL=tinymce.baseURL||'.';
 	var iframe1 = baseURL+'/plugins/upfile/upfiles.html';
     upfile.file_callback = editor.getParam('file_callback', undefined, 'function');
-    upfile.file_callback = editor.getParam('download_text', String, 'function');
+    // upfile.file_callback = editor.getParam('download_text', String, 'function');
 	upfile.tinymce = tinymce;
     upfile.res={};
 	var openDialog = function() {

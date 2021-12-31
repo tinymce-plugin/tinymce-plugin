@@ -887,6 +887,7 @@
         });
         getEmbedHtml(editor, serviceData).then(addEmbedHtml(win, editor)).catch(handleError(editor));
       }
+      
     };
     var handleEmbed = function (api) {
       var data = unwrap(api.getData());
@@ -902,6 +903,7 @@
     var mediaInput = [{
         name: 'source',
         type: 'urlinput',
+        placeholder: '哈哈哈', 
         filetype: 'media',
         label: 'Source'
       }];
@@ -984,6 +986,7 @@
         api.close();
       },
       onChange: function (api, detail) {
+     
         switch (detail.name) {
         case 'source':
           handleSource(currentData.get(), api);
@@ -1147,7 +1150,6 @@
       class: node.attr('class')
     });
     if (name === 'iframe') {
-      
       previewNode.attr({
         allowfullscreen: node.attr('allowfullscreen'),
         frameborder: '0'

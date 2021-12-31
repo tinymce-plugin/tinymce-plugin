@@ -1,0 +1,43 @@
+ul.tp-iconlists_tick {
+  padding-left: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+ul.tp-iconlists_tick li {
+  position: relative;
+  list-style: none!important;
+  padding-left: 2em;
+  line-height: 2em;
+  min-height: 2em;
+}
+ul.tp-iconlists_tick li::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 0;
+  left: 0;
+  background: url('/tinymce/icons/tp/tp-tick.png') no-repeat center;
+  background-size: 36px auto;
+}
+.tp-columns.tp-iconlists_default > li {
+  margin: 0 20px;
+  width: calc(50% - 40px);
+}
+.tp-columns {
+  display: flex;
+  flex-wrap: wrap;
+  margin: ;
+}
+.tp-columns > * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline-block;
+}
+.tp-columns_columns-2 {
+  padding-left: 0;
+}
+.tp-columns_columns-2 > * {
+  width: 50%;
+}

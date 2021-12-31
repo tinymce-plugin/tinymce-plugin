@@ -1,5 +1,5 @@
 /**
- * table (Enhancement 1.2v)
+ * table (Enhancement 1.3v)
  * The tinymce-plugins is used to set up the conversion table (Enhancement)
  * 
  * https://github.com/Five-great/tinymce-plugins

@@ -21,10 +21,10 @@
     };
 
     var getPageBreakClass = function () {
-      return 'mce-pagebreak';
+      return 'mce-pagebreak2';
     };
     var getPlaceholderHtml = function () {
-      return '<img src="' + global$1.transparentSrc + '" class="' + getPageBreakClass() + '" data-mce-resize="false" data-mce-placeholder />';
+      return '<img src="' + global$1.transparentSrc + '" class="' + getPageBreakClass() + '"  width="100" style="border: 1px solid #ccc;"  data-mce-placeholder />';
     };
     var setup = function (editor) {
       var separatorHtml = getSeparatorHtml(editor);
@@ -40,7 +40,7 @@
           while (i--) {
             node = nodes[i];
             className = node.attr('class');
-            if (className && className.indexOf('mce-pagebreak') !== -1) {
+            if (className && className.indexOf('mce-pagebreak2') !== -1) {
               var parentNode = node.parent;
               if (editor.schema.getBlockElements()[parentNode.name] && shouldSplitBlock(editor)) {
                 parentNode.type = 3;

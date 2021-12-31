@@ -2402,6 +2402,7 @@
         "p[style-name='heading 4'] => h4:fresh",
         "p[style-name='heading 5'] => h5:fresh",
         "p[style-name='heading 6'] => h6:fresh",
+        "u => span:Underline",
         
         "r[style-name='Strong'] => strong",
         
@@ -32606,7 +32607,7 @@ tinymce.PluginManager.add('importword', function(editor, url) {
 	function displayResult(result) {
         var messages = result.messages;
        if(typeof importword_filter == 'function'){
-           result=result.value.replace(/<table/gi,'<table style="border-collapse:collapse;" border="1"').replace(/<img/gi,'<img style="max-width:100%;" ');
+           result=result.value.replace(/<table/gi,'<table style="border-collapse:collapse;" border="1"').replace(/<img/gi,'<img style="max-width:100%;" ').replace(/<img/gi,'<img style="max-width:100%;" ');
            var importword_callback = function(res){
                 editor.insertContent(res);
                 top.tinymce.activeEditor.notificationManager.close();

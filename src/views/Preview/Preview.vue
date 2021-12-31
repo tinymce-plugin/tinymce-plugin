@@ -2,17 +2,15 @@
   <div class="preview demo-block">
     <div class="preview__card">
       <div class="preview__demo source">
+        <div><slot name="demo1" ></slot></div>
         <div><slot name="demo" ></slot></div>
       </div>
       <div :style='{height: `${state.codeHeight}px`}' class="preview__code meta">
         <div ref='codeRef' class="preview__coderef">
-              <div class="preview__description description">
-                 <slot name="description" ></slot>
-              </div>
-         
-          <pre class="preview__coder highlight">
-            <code class="language-markup">{{source}}</code>
-          </pre>
+            <div v-if="slotDescription" class="preview__description description">
+                <slot name="description" ></slot>
+            </div>
+           <div class="preview__coder highlight" v-html= 'source'></div>
         </div>
       </div>
       <div class="preview__footer demo-block-control"   @click.stop='toggleCode'>
@@ -22,15 +20,23 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import {
     reactive,
     ref,
+    defineComponent,
     onMounted,
-    nextTick
+    nextTick,
+    createApp
   } from "vue"
-  export default {
+// import tinymce from "/@/assets/lib/tinymce-vue/tinymce";
+// import tp$ from "/@/assets/lib/tinymce-vue/tinymce-plugin/tinymce-plugin";  
+// import TinymceVue from "/@/example/vueDemo/Tinymce-vue.vue";
+  export default defineComponent( {
     name: "Preview",
+    // components:{
+    //   TinymceVue
+    // },
     props: {
       source: {
         type: String,
@@ -42,31 +48,25 @@ import {
       const state = reactive({
         codeHeight: 0
       })
-      const highlightAll = () => {
-        nextTick(() => {
-          window.Prism.highlightAll()
-        })
-      }
+      const slotDescription = slots.description ? true : false
+    
       const toggleCode = () => {
         if (state.codeHeight === 0) {
-          // console.log(state.codeHeight)
           state.codeHeight = codeRef.value?.offsetHeight || 0
         } else {
           state.codeHeight = 0
         }
       }
-      onMounted(() => {
-        highlightAll()
-      })
       return {
         toggleCode,
         slots,
         state,
-        codeRef
+        codeRef,
+        slotDescription
 
       }
     }
-  }
+  })
 </script>
 
 <style lang="scss" scoped>
@@ -171,6 +171,9 @@ import {
   .ml-10 {
     margin-left: 10px;
   }
+   .preview__coder ::v-deep(.hljs){
+     border-radius: 0!important;
+   }
 }
 </style>
 

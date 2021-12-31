@@ -3027,3 +3027,6 @@ body.tox-dialog__disable-scroll {
 .tox .tox-image-tools__sidebar {
   height: 60px;
 }
+.tox .tox-dialog-wrap__backdrop {
+  background-color: rgb(70, 70, 70, 0.75);
+}

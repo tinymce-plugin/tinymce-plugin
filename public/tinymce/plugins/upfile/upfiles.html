@@ -328,6 +328,7 @@ element.style {
     let inputUrl = document.getElementById('upFileUrlID');
     let inputText = document.getElementById('upFileTextID');
     function sendUpFile(){
+      console.log(upfile)
       upload_handler(upfileData,function(url,_obj){
         inputUrl.value = url;
         inputText.value ?'': inputText.value = url;

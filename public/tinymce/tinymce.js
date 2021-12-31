@@ -4377,6 +4377,7 @@
       });
     };
     var addCustomElements = function (customElements) {
+     
       var customElementRegExp = /^(~)?(.+)$/;
       if (customElements) {
         mapCache.text_block_elements = mapCache.block_elements = null;
@@ -9529,7 +9530,7 @@
     if (selector === false || Env.iOS) {
       return false;
     } else {
-      return isString(selector) ? selector : 'table,img,figure.image,div,video,iframe';
+      return isString(selector) ? selector : 'table,img,figure.image,div,video,iframe,tp-buttons';
     }
   };
   var getResizeImgProportional = function (editor) {
@@ -11645,6 +11646,7 @@
       editor.nodeChanged();
     };
     var showResizeRect = function (targetElm) {
+      console.log(targetElm)
       unbindResizeHandleEvents();
       var position = dom.getPos(targetElm, rootElement);
       var selectedElmX = position.x;
@@ -11771,7 +11773,7 @@
         img.removeAttribute(elementSelectionAttr);
       });
       controlElm = e.type === 'mousedown' ? e.target : selection.getNode();
-      controlElm = dom.$(controlElm).closest('table,img,figure.image,hr,video,span.mce-preview-object')[0];
+      controlElm = dom.$(controlElm).closest('table,img,figure.image,hr,video,span.mce-preview-object,label.tp-collapse_label')[0];
       if (isChildOrEqual(controlElm, rootElement)) {
         disableGeckoResize();
         startElm = selection.getStart(true);
@@ -11806,6 +11808,7 @@
           var target = e.target, nodeName = target.nodeName;
           if (!resizeStarted && /^(TABLE|IMG|HR)$/.test(nodeName) && !isWithinContentEditableFalse(target)) {
             if (e.button !== 2) {
+           
               editor.selection.select(target, nodeName === 'TABLE');
             }
             if (e.type === 'mousedown') {

@@ -125,35 +125,11 @@ var xhrOnProgress = function (fun) {
                         // failFun('上传失败:' + error.message)
                     });
                  },
-                 attachment_max_size: 5009715200,
+                 tp_attachment_max_size: 5009715200,
                 //  attachment_style: '.attachment>img{display:inline-block!important;max-width:30px!important;}',
-                 attachment_icons_path: 'https://unpkg.com/@npkg/tinymce-plugins/plugins/attachment/icons',
-                 attachment_upload_handler: function (file, succFun, failFun, progressCallback) {
-                    var data = new FormData();
-                    data.append("file", file);
-                    $.ajax({
-                        data: data,
-                        type: 'GET',
-                        url: './api/file.json',
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        header:{'Content-Type':'multipart/form-data'},
-                        dataType: 'json',
-                        xhr: xhrOnProgress(function (e) {
-                            const percent = (e.loaded / e.total * 100 | 0) + '%';//计算百分比
-                            progressCallback(percent);
-                        }),
-                    }).then(function (data) {
-                        if ( data.code== 200) {
-                            succFun(data.data);
-                        } else {
-                           failFun('上传失败:' + data.data);
-                        }
-                    }).fail(function (error) {
-                        failFun('上传失败:' + error.message)
-                    });
-                },
+                 tp_attachment_assets_path: './plugins/attachment/icons',
+                
+              
                  init_instance_callback: function(editor){
                      $('#tinymce-app').fadeIn(1000);
                   //    editor.execCommand('selectAll');
@@ -251,7 +227,7 @@ var xhrOnProgress = function (fun) {
                 branding: false,
                 min_height:400,
                 max_height: 700,
-                plugins: 'print preview extendgroups clearhtml searchreplace insertdatetime autolink layout fullscreen line-height image upfile link media autosave code  table  advlist lists  emoticons autosave bdmap indent2em   axupimgs  letterspacing imagetools quickbars attachment wordcount  autoresize importword',
+                plugins: 'print preview extendgroups clearhtml searchreplace insertdatetime autolink layout fullscreen line-height image upfile link media autosave code  table  advlist lists  emoticons autosave bdmap indent2em   axupimgs  letterspacing imagetools quickbars attachment wordcount  autoresize importword tpTabs tpCollapse',
                 toolbar_groups: {
                         formatting: {
                             text: '文字格式',
@@ -306,7 +282,7 @@ var xhrOnProgress = function (fun) {
                           
                     }
                 },
-                toolbar: ['|code formatselect fontselect  fontsizeselect   forecolor backcolor bold italic underline strikethrough link alignment alignmentdrop undo redo  restoredraft| ','layout upfile importword lineheight letterspacing line-height indent2em table image imagetools emoticons mygroups preview'],
+                toolbar: ['|code formatselect fontselect  fontsizeselect   forecolor backcolor bold italic underline strikethrough link alignment alignmentdrop undo redo  restoredraft| ','layout upfile importword lineheight letterspacing line-height indent2em table image imagetools emoticons mygroups tpCollapse tpTabs preview'],
                 table_style_by_css: true,
                 OperationManualHtml: '',
                 CommonProblemHtml: '',

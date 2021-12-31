@@ -9,12 +9,13 @@
   <!-- <script src='./api/api.js'></script> -->
   
   <script src='tinymce.js'></script><!-- 必要 -->
+  <script src='tinymce-plugin.js'></script><!-- 必要 -->
   <style>
     body{max-width: 1920px; width: 100%; margin: 0 auto;}
     header{}
     .header_logo{ display: inline-block;vertical-align: middle;}
     header > div{ display: block; text-align: center;}
-   .demo,#showID{ margin-top:50px; border: 2px solid #dedede ;}
+   .demo,#showID{ margin-top:50px; border: 2px solid #dedede ;max-width: 1300px;}
    #showID{ padding: 20px;}
    #tinymce-app .tinymce-box {padding-bottom: 0px!important;}
    .tiny_color{ color:#344A85 ;text-shadow: 0 3px 5px #677285; display: inline-block;margin-right: -20px; vertical-align: middle;}
@@ -60,6 +61,29 @@
     function savefun(){
       $("#showID").html(tinymceConfig.getHtml())
     }
+    // var baseUrl=["https://tsdcake-admin.fivecc.cn/","https://admin2.fivecc.cn/"];
+    //   var t = new Date().getHours()<=10? 1:0;  
+    //   var baseInit = [{
+    //     appId: 'EP3f9yGusi4xzlXE4jzuRJJH-gzGzoHsz',
+    //     appKey: 'bjW6N0jbEieK3JFMAVpG2HOq'      
+    // },{
+    //     appId: 'oq2VPjPw3kdjGibR5BTdvg9g-gzGzoHsz',//2
+    //     appKey: '0I6RmFuM46IrWgc9QOAKeat6'
+    // }]
+    // $.ajax({
+    //         //url: "https://tsdcake-admin.fivecc.cn"+query,
+    //         url: baseUrl[t]+'token',
+    //         method: 'GET',
+    //         processData: false,
+    //         contentType: false,
+    //         header: {
+    //             'Content-Type': 'application/json',
+    //             "X-LC-Id": baseInit[t].appId,
+    //             "X-LC-Key": baseInit[t].appKey
+    //           },
+    //    }).then(res=>{
+    //      console.log(res);
+    //    });
   </script>
   <script src="./config.js"></script>
 </body>

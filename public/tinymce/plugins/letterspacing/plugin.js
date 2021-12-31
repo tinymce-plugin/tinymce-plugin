@@ -12,7 +12,7 @@
 tinymce.PluginManager.add('letterspacing', function(editor, url) {
     var pluginName='设置间距';
     var global$1 = tinymce.util.Tools.resolve('tinymce.util.Tools');
-    var letterspacing_val = editor.getParam('letterspacing', '0px 1px 2px 4px 6px 8px 10px 20px 40px');
+    var letterspacing_val = editor.getParam('tp-letterspacing', '0px 1px 2px 4px 6px 8px 10px 20px 40px');
     editor.on('init', function() {
         editor.formatter.register({
             letterspacing: {
