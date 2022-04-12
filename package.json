@@ -1,33 +1,33 @@
 {
-  "name": "tinymce-plugin",
-  "version": "0.0.0",
+  "name": "@npkg/tinymce-plugin",
+  "private": true,
+  "version": "0.0.1",
+  "main": "dist/tinymce-plugin.js",
+  "unpkg": "dist/tinymce-plugin.min.js",
+  "jsdelivr": "dist/tinymce-plugin.min.js",
+  "module": "dist/index.js",
+  "types": "dist/types/tinymcePlugin.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "tsc": "vue-tsc --noEmit",
+    "build:tsc": "vue-tsc --noEmit && vite build",
     "preview": "vite preview"
   },
+  "author": "Five(Li Hailong)",
+  "license": "MIT",
+  "description": "tinymce-plugin",
   "dependencies": {
-    "path": "^0.12.7",
-    "vue": "3.2.15",
-    "vue-router": "4.0.6"
+    "vue": "^3.2.25"
   },
+  "homepage": "/tinymce-plugin#readme",
   "devDependencies": {
-    "@tinymce/tinymce-react": "^3.13.0",
-    "@types/node": "^17.0.5",
-    "@types/vue": "^2.0.0",
-    "@vitejs/plugin-vue": "^2.0.0",
-    "@vitejs/plugin-vue-jsx": "^1.3.3",
-    "@vue/compiler-sfc": "3.2.15",
-    "axios": "^0.24.0",
-    "markdown-it": "^12.3.0",
-    "qs": "^6.10.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "sass": "1.37.5",
-    "sass-loader": "12.1.0",
-    "typescript": "4.4.2",
-    "vite": "^2.7.2",
-    "vue-tsc": "0.28.10"
+    "@rollup/plugin-typescript": "^8.3.1",
+    "@types/node": "^17.0.23",
+    "tinymce": "5.8.2",
+    "ts-morph": "^14.0.0",
+    "tslib": "^2.3.1",
+    "typescript": "^4.5.4",
+    "vite": "^2.8.0",
+    "vue-tsc": "^0.29.8"
   }
 }

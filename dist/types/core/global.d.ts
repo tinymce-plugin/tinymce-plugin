@@ -1,0 +1,13 @@
+declare let tp$tinymce: any;
+declare let global$1: any;
+declare let global$7: any;
+declare let global$4: any;
+declare let global$6: any;
+declare let global$11: any;
+declare let tp$Serialize: any;
+declare let tp$DomParser: any;
+declare let tp$State: any;
+declare let tp$getStyleValue: (key: any, str: any) => any;
+declare function tp$SetSpecialStyle(editor: any, _self: any, specialStyleClass: any, specialStyleValue: any): void;
+declare let tp$Component: any;
+export { tp$tinymce, tp$Component, tp$SetSpecialStyle, tp$getStyleValue, tp$State, global$1, global$7, global$4, global$6, global$11, tp$Serialize, tp$DomParser, };
