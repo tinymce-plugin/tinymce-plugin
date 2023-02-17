@@ -1,5 +1,5 @@
 {
-  "name": "@npkg/tinymce-plugin",
+  "name": "tinymce-plugin",
   "version": "0.0.1",
   "main": "dist/tinymce-plugin.js",
   "unpkg": "dist/tinymce-plugin.min.js",
